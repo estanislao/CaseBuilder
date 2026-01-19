@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -343,7 +343,7 @@
               <div>
                 <div class="text-sm font-bold text-yellow-900 mb-2">Precificação Diferenciada Aplicada</div>
                 <div class="text-xs text-yellow-800 space-y-1">
-                  <p>• <strong>Discovery (Assessment + Entendimento)</strong>: Valor/hora com <strong>30% de desconto</strong></p>
+                  <p>• <strong>Discovery (Assessment + Entendimento)</strong>: Valor/hora com <strong>20% de desconto</strong></p>
                   <p>• <strong>Outras fases</strong> (Desenvolvimento, Capacitação, Go-Live): Valor/hora normal</p>
                   <p class="mt-2 text-yellow-700">Esta diferenciação já está aplicada no investimento total abaixo.</p>
                 </div>
@@ -573,8 +573,8 @@
       }
       
       // === PRECIFICAÇÃO DIFERENCIADA ===
-      // Assessment e Entendimento: 30% de desconto
-      const valorPorHoraFasesIniciais = valorPorHora * 0.70;
+      // Assessment e Entendimento: 20% de desconto
+      const valorPorHoraFasesIniciais = valorPorHora * 0.80;
       
       // Calcular investimento por fase
       const custoAssessment = horasDiscovery * valorPorHoraFasesIniciais; // Discovery é Assessment
@@ -598,7 +598,7 @@
       
       document.getElementById('valorHoraAplicado').textContent = 'R$ ' + valorPorHora.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
       document.getElementById('valorHoraAplicado').nextElementSibling.innerHTML = 
-        'Range: ' + rangeTexto + '<br><span class="text-xs">Discovery: R$ ' + valorPorHoraFasesIniciais.toFixed(2) + '/h (30% desc) | Outras: R$ ' + valorPorHora.toFixed(2) + '/h</span>';
+        'Range: ' + rangeTexto + '<br><span class="text-xs">Discovery: R$ ' + valorPorHoraFasesIniciais.toFixed(2) + '/h (20% desc) | Outras: R$ ' + valorPorHora.toFixed(2) + '/h</span>';
       
       document.getElementById('investimentoFinal').textContent = 'R$ ' + investimentoTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
       document.getElementById('totalHorasCopia').textContent = totalHoras.toLocaleString('pt-BR', {maximumFractionDigits: 0}) + ' horas';
