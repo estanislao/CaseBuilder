@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -92,8 +92,11 @@
             >
               🔄 Preencher Horas Automaticamente (Baseado no PDF)
             </button>
+            <div id="mensagemPreenchimento" style="opacity: 0; transition: opacity 0.3s;" class="text-sm text-center mt-2 p-2 bg-green-100 text-green-800 rounded-lg font-medium">
+              ✅ Campos preenchidos com sucesso!
+            </div>
             <p class="text-xs text-gray-500 mt-2 text-center">
-              Os campos serão preenchidos com valores da tabela do PDF. Você pode editá-los manualmente depois.
+              Os campos serão preenchidos automaticamente ao mudar Processos ou Sistemas. Você pode editá-los manualmente depois.
             </p>
           </div>
           
@@ -440,40 +443,63 @@
     
     // Função para preencher campos automaticamente baseado na tabela PDF
     function preencherCamposAutomaticamente() {
-      const numeroProcessos = parseInt(document.getElementById('numeroProcessos').value) || 1;
-      const numeroSistemas = parseFloat(document.getElementById('numeroSistemas').value) || 1;
-      
-      // Converter coeficiente em número real de sistemas
-      let numSistemas = 2;
-      if (numeroSistemas >= 1.08) {
-        numSistemas = 5;
-      } else if (numeroSistemas >= 1.05) {
-        numSistemas = 3;
+      try {
+        const numeroProcessos = parseInt(document.getElementById('numeroProcessos').value) || 1;
+        const coeficienteSistemas = parseFloat(document.getElementById('numeroSistemas').value) || 1;
+        
+        // Converter coeficiente em número real de sistemas
+        let numSistemas = 2;
+        if (coeficienteSistemas >= 1.08) {
+          numSistemas = 5; // 5+ sistemas
+        } else if (coeficienteSistemas >= 1.05) {
+          numSistemas = 3; // 3-4 sistemas
+        } else {
+          numSistemas = 2; // 1-2 sistemas
+        }
+        
+        console.log('🔍 Preenchendo campos:', {numeroProcessos, coeficienteSistemas, numSistemas});
+        
+        // Selecionar coluna da tabela
+        const coluna = selecionarColunaPDF(numeroProcessos, numSistemas);
+        
+        console.log('📊 Coluna selecionada:', coluna);
+        
+        // Preencher campos com valores da tabela
+        // Discovery = Assessment + Entendimento
+        const horasDiscovery = coluna.assessment + coluna.entendimento;
+        document.getElementById('discoveryBaixa').value = Math.round(horasDiscovery * 0.7); // 70% para baixa
+        document.getElementById('discoveryMedia').value = horasDiscovery;
+        document.getElementById('discoveryAlta').value = Math.round(horasDiscovery * 1.2); // 120% para alta
+        
+        // Desenvolvimento = Preparação + Modelagem por processo
+        const horasPorProcesso = Math.round((coluna.preparacao + coluna.modelagem) / coluna.processos);
+        document.getElementById('horasPorProcesso').value = horasPorProcesso;
+        
+        // Capacitação = Avaliação
+        document.getElementById('capacitacaoBaixa').value = Math.round(coluna.avaliacao * 0.8);
+        document.getElementById('capacitacaoAlta').value = coluna.avaliacao;
+        
+        // Go-Live = Implantação
+        document.getElementById('goLive').value = coluna.implantacao;
+        
+        console.log('✅ Campos preenchidos com sucesso!');
+        
+        // Mostrar mensagem de sucesso
+        const mensagem = document.getElementById('mensagemPreenchimento');
+        if (mensagem) {
+          mensagem.style.opacity = '1';
+          setTimeout(() => {
+            mensagem.style.opacity = '0';
+          }, 2000);
+        }
+        
+        // Recalcular
+        calcular();
+        
+      } catch (error) {
+        console.error('❌ Erro ao preencher campos:', error);
+        alert('Erro ao preencher campos automaticamente. Verifique o console para mais detalhes.');
       }
-      
-      // Selecionar coluna da tabela
-      const coluna = selecionarColunaPDF(numeroProcessos, numSistemas);
-      
-      // Preencher campos com valores da tabela
-      // Discovery = Assessment + Entendimento
-      const horasDiscovery = coluna.assessment + coluna.entendimento;
-      document.getElementById('discoveryBaixa').value = Math.round(horasDiscovery * 0.7); // 70% para baixa
-      document.getElementById('discoveryMedia').value = horasDiscovery;
-      document.getElementById('discoveryAlta').value = Math.round(horasDiscovery * 1.2); // 120% para alta
-      
-      // Desenvolvimento = Preparação + Modelagem por processo
-      const horasPorProcesso = (coluna.preparacao + coluna.modelagem) / numeroProcessos;
-      document.getElementById('horasPorProcesso').value = Math.round(horasPorProcesso);
-      
-      // Capacitação = Avaliação
-      document.getElementById('capacitacaoBaixa').value = Math.round(coluna.avaliacao * 0.8);
-      document.getElementById('capacitacaoAlta').value = coluna.avaliacao;
-      
-      // Go-Live = Implantação
-      document.getElementById('goLive').value = coluna.implantacao;
-      
-      // Recalcular
-      calcular();
     }
     
     function calcular() {
