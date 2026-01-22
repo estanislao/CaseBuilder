@@ -113,11 +113,242 @@
 
     // Benchmarks por área
     const areaBenchmarks = {
+      auditoria: {
+        nome: 'Auditoria',
+        reducaoTempo: 75,
+        reducaoErros: 95,
+        ganhoVelocidade: 80,
+        desafiosComuns: [
+          'Análise de grandes volumes de dados',
+          'Identificação de anomalias e padrões suspeitos',
+          'Documentação e trilhas de auditoria'
+        ],
+        beneficiosEspecificos: [
+          'Análise de 100% dos dados vs amostragem tradicional',
+          'Detecção automática de padrões anômalos',
+          'Trilhas de auditoria automáticas e rastreáveis'
+        ],
+        quickWins: [
+          { titulo: 'Detecção de Anomalias', economia: 18000, tempo: 5, impacto: 'ALTO' },
+          { titulo: 'Testes de Controles Internos', economia: 11000, tempo: 3, impacto: 'MEDIO' },
+          { titulo: 'Coleta Automática de Dados', economia: 7000, tempo: 2, impacto: 'MEDIO' }
+        ]
+      },
+      comercial: {
+        nome: 'Comercial / Vendas',
+        reducaoTempo: 80,
+        reducaoErros: 86,
+        ganhoVelocidade: 75,
+        desafiosComuns: [
+          'Processos de cotação e proposta demorados',
+          'Acompanhamento manual de leads e pipeline',
+          'Geração de relatórios de vendas'
+        ],
+        beneficiosEspecificos: [
+          'Automação de propostas comerciais e cotações',
+          'Dashboard em tempo real de pipeline e conversão',
+          'Alertas automáticos de oportunidades e follow-ups'
+        ],
+        quickWins: [
+          { titulo: 'Automação de Propostas', economia: 15000, tempo: 4, impacto: 'ALTO' },
+          { titulo: 'Dashboard de Vendas', economia: 12000, tempo: 3, impacto: 'ALTO' },
+          { titulo: 'Follow-up Automático', economia: 8000, tempo: 2, impacto: 'MEDIO' }
+        ]
+      },
+      compliance: {
+        nome: 'Compliance',
+        reducaoTempo: 70,
+        reducaoErros: 95,
+        ganhoVelocidade: 75,
+        desafiosComuns: [
+          'Obrigações regulatórias múltiplas e complexas',
+          'Prazos regulatórios rígidos',
+          'Monitoramento contínuo de conformidade'
+        ],
+        beneficiosEspecificos: [
+          'Calendário automatizado de obrigações regulatórias',
+          'Validação prévia de documentos e arquivos',
+          'Monitoramento de pendências e alertas automáticos'
+        ],
+        quickWins: [
+          { titulo: 'Calendário de Obrigações', economia: 14000, tempo: 4, impacto: 'ALTO' },
+          { titulo: 'Validação de Documentos', economia: 10000, tempo: 3, impacto: 'ALTO' },
+          { titulo: 'Alertas de Prazos', economia: 6000, tempo: 2, impacto: 'MEDIO' }
+        ]
+      },
+      esg: {
+        nome: 'ESG',
+        reducaoTempo: 70,
+        reducaoErros: 95,
+        ganhoVelocidade: 70,
+        desafiosComuns: [
+          'Coleta de dados de múltiplas fontes e formatos',
+          'Consistência e auditabilidade dos dados ESG',
+          'Complexidade de frameworks (GRI, TCFD, IFRS)'
+        ],
+        beneficiosEspecificos: [
+          'Centralização automática de dados ESG de IoT e sensores',
+          'Dashboards em tempo real com KPIs de sustentabilidade',
+          'Relatórios padronizados para stakeholders e reguladores'
+        ],
+        quickWins: [
+          { titulo: 'Consolidação de Dados de Emissões', economia: 16000, tempo: 4, impacto: 'ALTO' },
+          { titulo: 'Automação de Relatórios ESG', economia: 13000, tempo: 3, impacto: 'ALTO' },
+          { titulo: 'Monitoramento de Consumo Energético', economia: 9000, tempo: 2, impacto: 'MEDIO' }
+        ]
+      },
+      financeira: {
+        nome: 'Financeira',
+        reducaoTempo: 70,
+        reducaoErros: 95,
+        ganhoVelocidade: 75,
+        desafiosComuns: [
+          'Conciliação bancária manual e demorada',
+          'Processos de contas a pagar e receber',
+          'Fechamento contábil e relatórios financeiros'
+        ],
+        beneficiosEspecificos: [
+          'Conciliação bancária automática e em tempo real',
+          'Fluxo de caixa atualizado automaticamente',
+          'Relatórios financeiros gerenciais automatizados'
+        ],
+        quickWins: [
+          { titulo: 'Conciliação Bancária', economia: 14000, tempo: 3, impacto: 'ALTO' },
+          { titulo: 'Contas a Pagar/Receber', economia: 16000, tempo: 4, impacto: 'ALTO' },
+          { titulo: 'Relatórios Gerenciais', economia: 9000, tempo: 2, impacto: 'MEDIO' }
+        ]
+      },
+      fiscal: {
+        nome: 'Fiscal',
+        reducaoTempo: 66,
+        reducaoErros: 92,
+        ganhoVelocidade: 70,
+        desafiosComuns: [
+          'Volume alto de documentos fiscais',
+          'Validações complexas de NFe e SPED',
+          'Conformidade com múltiplas legislações'
+        ],
+        beneficiosEspecificos: [
+          'Validação automática de XMLs e arquivos SPED',
+          'Detecção de inconsistências antes do envio',
+          'Auditoria contínua de processos fiscais'
+        ],
+        quickWins: [
+          { titulo: 'Validação SPED Fiscal', economia: 10000, tempo: 3, impacto: 'ALTO' },
+          { titulo: 'Reconciliação de NFe', economia: 13000, tempo: 4, impacto: 'ALTO' },
+          { titulo: 'Relatórios Fiscais', economia: 6000, tempo: 2, impacto: 'MEDIO' }
+        ]
+      },
+      manutencao: {
+        nome: 'Manutenção de Equipamentos',
+        reducaoTempo: 40,
+        reducaoErros: 90,
+        ganhoVelocidade: 45,
+        desafiosComuns: [
+          'Registro manual de manutenções e falhas',
+          'Controle de estoque de peças e insumos',
+          'Agendamento e priorização de manutenções'
+        ],
+        beneficiosEspecificos: [
+          'Manutenção preventiva automatizada por IoT',
+          'Controle automático de estoque e reposição',
+          'Dashboard de performance de equipamentos'
+        ],
+        quickWins: [
+          { titulo: 'Registro de Manutenções', economia: 8000, tempo: 3, impacto: 'MEDIO' },
+          { titulo: 'Controle de Estoque', economia: 10000, tempo: 4, impacto: 'ALTO' },
+          { titulo: 'Alertas de Manutenção', economia: 6000, tempo: 2, impacto: 'MEDIO' }
+        ]
+      },
+      marketing: {
+        nome: 'Marketing',
+        reducaoTempo: 75,
+        reducaoErros: 90,
+        ganhoVelocidade: 80,
+        desafiosComuns: [
+          'Análise manual de campanhas e performance',
+          'Geração de relatórios de múltiplas plataformas',
+          'Segmentação e qualificação de leads'
+        ],
+        beneficiosEspecificos: [
+          'Dashboard consolidado de todas as campanhas',
+          'Automação de relatórios cross-channel',
+          'Lead scoring e nutrição automatizados'
+        ],
+        quickWins: [
+          { titulo: 'Dashboard de Campanhas', economia: 12000, tempo: 3, impacto: 'ALTO' },
+          { titulo: 'Relatórios Automatizados', economia: 14000, tempo: 4, impacto: 'ALTO' },
+          { titulo: 'Lead Scoring', economia: 9000, tempo: 3, impacto: 'MEDIO' }
+        ]
+      },
+      outros: {
+        nome: 'Outros',
+        reducaoTempo: 70,
+        reducaoErros: 80,
+        ganhoVelocidade: 70,
+        desafiosComuns: [
+          'Processos manuais e repetitivos',
+          'Falta de integração entre sistemas',
+          'Retrabalho e inconsistências de dados'
+        ],
+        beneficiosEspecificos: [
+          'Automação de processos customizados',
+          'Integração de sistemas e bases de dados',
+          'Redução de erros e retrabalho'
+        ],
+        quickWins: [
+          { titulo: 'Automação de Processos', economia: 12000, tempo: 4, impacto: 'MEDIO' },
+          { titulo: 'Integração de Sistemas', economia: 15000, tempo: 5, impacto: 'ALTO' },
+          { titulo: 'Validação de Dados', economia: 8000, tempo: 3, impacto: 'MEDIO' }
+        ]
+      },
+      rh: {
+        nome: 'RH',
+        reducaoTempo: 85,
+        reducaoErros: 95,
+        ganhoVelocidade: 70,
+        desafiosComuns: [
+          'Processos de admissão e onboarding manuais',
+          'Gestão de ponto e folha de pagamento',
+          'Análise de dados de performance e turnover'
+        ],
+        beneficiosEspecificos: [
+          'Automação de admissão, documentos e onboarding',
+          'Processamento automático de ponto e folha',
+          'Analytics de RH e people analytics'
+        ],
+        quickWins: [
+          { titulo: 'Onboarding Automatizado', economia: 14000, tempo: 3, impacto: 'ALTO' },
+          { titulo: 'Processamento de Folha', economia: 18000, tempo: 5, impacto: 'ALTO' },
+          { titulo: 'People Analytics', economia: 10000, tempo: 3, impacto: 'MEDIO' }
+        ]
+      },
+      supplychain: {
+        nome: 'Supply Chain',
+        reducaoTempo: 75,
+        reducaoErros: 90,
+        ganhoVelocidade: 75,
+        desafiosComuns: [
+          'Gestão manual de inventário e estoque',
+          'Rastreamento de pedidos e entregas',
+          'Previsão de demanda e planejamento'
+        ],
+        beneficiosEspecificos: [
+          'Gestão automática de estoque e reposição',
+          'Rastreamento em tempo real de pedidos',
+          'Previsão de demanda com machine learning'
+        ],
+        quickWins: [
+          { titulo: 'Gestão de Inventário', economia: 16000, tempo: 4, impacto: 'ALTO' },
+          { titulo: 'Rastreamento de Pedidos', economia: 12000, tempo: 3, impacto: 'ALTO' },
+          { titulo: 'Previsão de Demanda', economia: 14000, tempo: 5, impacto: 'ALTO' }
+        ]
+      },
       tributaria: {
         nome: 'Tributária',
-        reducaoTempo: 75,
-        reducaoErros: 92,
-        ganhoVelocidade: 80,
+        reducaoTempo: 70,
+        reducaoErros: 95,
+        ganhoVelocidade: 75,
         desafiosComuns: [
           'Cálculos complexos de impostos',
           'Múltiplas legislações simultâneas',
@@ -132,90 +363,6 @@
           { titulo: 'Conciliação de ICMS', economia: 12000, tempo: 3, impacto: 'ALTO' },
           { titulo: 'Apuração de PIS/COFINS', economia: 15000, tempo: 4, impacto: 'ALTO' },
           { titulo: 'Validação de Notas Fiscais', economia: 8000, tempo: 2, impacto: 'MEDIO' }
-        ]
-      },
-      fiscal: {
-        nome: 'Fiscal',
-        reducaoTempo: 70,
-        reducaoErros: 88,
-        ganhoVelocidade: 75,
-        desafiosComuns: [
-          'Volume alto de documentos fiscais',
-          'Validações complexas de NFe',
-          'Conformidade com SPED'
-        ],
-        beneficiosEspecificos: [
-          'Validação automática de XMLs e arquivos SPED',
-          'Detecção de inconsistências antes do envio',
-          'Auditoria contínua de processos fiscais'
-        ],
-        quickWins: [
-          { titulo: 'Validação SPED Fiscal', economia: 10000, tempo: 3, impacto: 'ALTO' },
-          { titulo: 'Reconciliação de NFe', economia: 13000, tempo: 4, impacto: 'ALTO' },
-          { titulo: 'Relatórios Fiscais', economia: 6000, tempo: 2, impacto: 'MEDIO' }
-        ]
-      },
-      auditoria: {
-        nome: 'Auditoria',
-        reducaoTempo: 72,
-        reducaoErros: 95,
-        ganhoVelocidade: 78,
-        desafiosComuns: [
-          'Análise de grandes volumes de dados',
-          'Identificação de anomalias',
-          'Documentação de evidências'
-        ],
-        beneficiosEspecificos: [
-          'Análise de 100% dos dados vs amostragem',
-          'Detecção automática de padrões suspeitos',
-          'Trilhas de auditoria automáticas'
-        ],
-        quickWins: [
-          { titulo: 'Detecção de Anomalias', economia: 18000, tempo: 5, impacto: 'ALTO' },
-          { titulo: 'Testes de Controles', economia: 11000, tempo: 3, impacto: 'MEDIO' },
-          { titulo: 'Coleta Automática de Dados', economia: 7000, tempo: 2, impacto: 'MEDIO' }
-        ]
-      },
-      compliance: {
-        nome: 'Fiscal Compliance',
-        reducaoTempo: 68,
-        reducaoErros: 90,
-        ganhoVelocidade: 72,
-        desafiosComuns: [
-          'Obrigações acessórias múltiplas',
-          'Prazos regulatórios rígidos',
-          'Integração de sistemas legados'
-        ],
-        beneficiosEspecificos: [
-          'Calendário automatizado de obrigações',
-          'Validação pré-envio de arquivos fiscais',
-          'Monitoramento de pendências e alertas'
-        ],
-        quickWins: [
-          { titulo: 'Validação de Arquivos SPED', economia: 14000, tempo: 4, impacto: 'ALTO' },
-          { titulo: 'Calendário de Obrigações', economia: 9000, tempo: 2, impacto: 'MEDIO' },
-          { titulo: 'Conciliação de Dados', economia: 11000, tempo: 3, impacto: 'ALTO' }
-        ]
-      },
-      esg: {
-        nome: 'ESG',
-        reducaoTempo: 68,
-        reducaoErros: 88,
-        ganhoVelocidade: 72,
-        desafiosComuns: [
-          'Coleta de dados de múltiplas fontes',
-          'Consistência e auditabilidade dos dados',
-          'Complexidade de frameworks (GRI, TCFD, IFRS)'
-        ],
-        beneficiosEspecificos: [
-          'Centralização automática de dados ESG de IoT, sensores e sistemas',
-          'Dashboards em tempo real com KPIs de sustentabilidade',
-          'Relatórios padronizados para stakeholders e reguladores'
-        ],
-        quickWins: [
-          { titulo: 'Consolidação de Dados de Emissões', economia: 16000, tempo: 4, impacto: 'ALTO' },
-          { titulo: 'Automação de Relatórios ESG', economia: 13000, tempo: 3, impacto: 'ALTO' },
-          { titulo: 'Monitoramento de Consumo Energético', economia: 9000, tempo: 2, impacto: 'MEDIO' }
         ]
       }
     };
@@ -1108,11 +1255,18 @@ const BusinessCaseBuilder = () => {
                   onChange={(e) => handleInputChange('area', e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#032c62] focus:border-transparent"
                 >
-                  <option value="tributaria">Tributária</option>
-                  <option value="fiscal">Fiscal</option>
                   <option value="auditoria">Auditoria</option>
+                  <option value="comercial">Comercial / Vendas</option>
                   <option value="compliance">Compliance</option>
                   <option value="esg">ESG</option>
+                  <option value="financeira">Financeira</option>
+                  <option value="fiscal">Fiscal</option>
+                  <option value="manutencao">Manutenção de Equipamentos</option>
+                  <option value="marketing">Marketing</option>
+                  <option value="outros">Outros</option>
+                  <option value="rh">RH</option>
+                  <option value="supplychain">Supply Chain</option>
+                  <option value="tributaria">Tributária</option>
                 </select>
               </div>
               
@@ -2467,6 +2621,12 @@ const BusinessCaseBuilder = () => {
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
+        </div>
+        
+        <div className="mt-8 text-center text-xs text-gray-500">
+          <p>
+            <strong>Fontes dos benchmarks:</strong> Nasajon, Thomson Reuters, Milliman, Digital Workforce e Gartner
+          </p>
         </div>
         
         <div className="mt-6 text-center text-sm text-gray-600">
